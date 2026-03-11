@@ -1,0 +1,1 @@
+{"name":"check_loan_status","description":"Retrieve loan status, delinquency days, and eligible resolution options","parameters":{"customer_id":{"type":"string","description":"Loan account ID","required":true}}}

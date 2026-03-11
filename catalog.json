@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "description": "Loan Collections AI Governance — Agent tools for regulated financial services workflows",
+  "tools": [
+    {
+      "id": "identity-verification",
+      "name": "Identity Verification",
+      "description": "Verify customer identity using 2 of 5 approved methods (SSN last 4, DOB, account number, mother's maiden name, registered email). Per Section 2: agent MUST verify before any collections discussion. If verification fails, agent MUST terminate and disclose nothing.",
+      "category": "compliance",
+      "icon": "🪪",
+      "path": "tools/identity-verification/tool.py",
+      "configPath": "tools/identity-verification/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "loan-status",
+      "name": "Loan Status Check",
+      "description": "Retrieve current loan status including delinquency days, payment history, prior modifications, and eligible resolution options. Returns all data needed for hardship assessment per Sections 3-7.",
+      "category": "data",
+      "icon": "📊",
+      "path": "tools/loan-status/tool.py",
+      "configPath": "tools/loan-status/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "deferment-history",
+      "name": "Deferment History",
+      "description": "Check whether customer has received a deferment in the past 12 months. Per Section 4: deferment MUST NOT be offered if one was granted within 12 months or loan was modified more than once.",
+      "category": "data",
+      "icon": "📅",
+      "path": "tools/deferment-history/tool.py",
+      "configPath": "tools/deferment-history/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "hardship-recorder",
+      "name": "Hardship Recorder",
+      "description": "Document customer's stated hardship reason. Per Section 3: agent MUST record the stated reason when a customer claims financial hardship. This is a mandatory compliance field.",
+      "category": "compliance",
+      "icon": "📝",
+      "path": "tools/hardship-recorder/tool.py",
+      "configPath": "tools/hardship-recorder/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "offer-deferment",
+      "name": "Offer Deferment",
+      "description": "Offer payment deferment. Per Section 4: requires 30-90 days delinquent, no deferment in past 12 months, max 1 prior modification. Extends loan term; interest accrues during deferment.",
+      "category": "resolution",
+      "icon": "⏸️",
+      "path": "tools/offer-deferment/tool.py",
+      "configPath": "tools/offer-deferment/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "offer-modified-plan",
+      "name": "Offer Modified Plan",
+      "description": "Offer modified payment plan. Per Section 5: requires 30-120 days delinquent, minimum 50% of original payment, maximum 6 month duration.",
+      "category": "resolution",
+      "icon": "📋",
+      "path": "tools/offer-modified-plan/tool.py",
+      "configPath": "tools/offer-modified-plan/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "offer-settlement",
+      "name": "Offer Settlement",
+      "description": "Offer settlement. Per Section 6: requires 90+ days delinquent, vehicle not repossessed. MUST be escalated to supervisor before communicating to customer. CEDAR-GATED: blocked by policy if delinquency < 90 days.",
+      "category": "resolution",
+      "icon": "🤝",
+      "path": "tools/offer-settlement/tool.py",
+      "configPath": "tools/offer-settlement/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "repossession-check",
+      "name": "Repossession Eligibility",
+      "description": "Check repossession eligibility. Per Section 7: requires 60+ days delinquent, all options declined, notice sent, 10-day wait in applicable states. MUST NOT initiate if < 60 days delinquent.",
+      "category": "resolution",
+      "icon": "🚗",
+      "path": "tools/repossession-check/tool.py",
+      "configPath": "tools/repossession-check/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "compliance-logger",
+      "name": "Compliance Logger",
+      "description": "Log all 6 required fields after every collections call per Section 9: identity method+outcome, hardship reason, options discussed, option offered/declined, supervisor ref (if settlement), next action date. Missing ANY field = non-compliant.",
+      "category": "compliance",
+      "icon": "✅",
+      "path": "tools/compliance-logger/tool.py",
+      "configPath": "tools/compliance-logger/config.json",
+      "version": "1.0.0"
+    },
+    {
+      "id": "fair-lending-validator",
+      "name": "Fair Lending Validator",
+      "description": "Validate that resolution decisions comply with fair lending rules per Section 8. Decisions MUST be based solely on loan status, payment history, delinquency duration, and hardship reason. MUST NOT vary by race, color, religion, national origin, sex, marital status, age, or public assistance income.",
+      "category": "compliance",
+      "icon": "⚖️",
+      "path": "tools/fair-lending-validator/tool.py",
+      "configPath": "tools/fair-lending-validator/config.json",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"name":"offer_deferment","description":"Offer payment deferment per Section 4 (30-90 days, no recent deferment, max 1 modification)","parameters":{"customer_id":{"type":"string","required":true},"deferment_months":{"type":"integer","description":"Months to defer (1-3)","required":true}}}

@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from strands import Agent
 from bedrock_agentcore import BedrockAgentCoreApp
-from tools.identity_tools import verify_customer_identity
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "tools", "identity-verification")); from tool import verify_customer_identity
 
 
 # Load SOP as system prompt

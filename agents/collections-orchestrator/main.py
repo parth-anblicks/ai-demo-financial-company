@@ -30,21 +30,19 @@ from bedrock_agentcore import BedrockAgentCoreApp
 
 # Import ALL tools for the orchestrator
 # In production, these would be accessed via AgentCore Gateway (MCP)
-from tools.identity_tools import verify_customer_identity
-from tools.assessment_tools import (
-    check_loan_status,
-    check_deferment_history,
-    record_hardship,
-    offer_deferment,
-    offer_modified_plan,
-    offer_settlement,
-    check_repossession_eligibility,
-)
-from tools.compliance_tools import (
-    log_interaction,
-    validate_fair_lending,
-    get_compliance_summary,
-)
+# Import from individual tool directories
+import sys, os
+_tools = os.path.join(os.path.dirname(__file__), "..", "..", "tools")
+sys.path.insert(0, os.path.join(_tools, "identity-verification")); from tool import verify_customer_identity
+sys.path.insert(0, os.path.join(_tools, "loan-status")); from tool import check_loan_status
+sys.path.insert(0, os.path.join(_tools, "deferment-history")); from tool import check_deferment_history
+sys.path.insert(0, os.path.join(_tools, "hardship-recorder")); from tool import record_hardship
+sys.path.insert(0, os.path.join(_tools, "offer-deferment")); from tool import offer_deferment
+sys.path.insert(0, os.path.join(_tools, "offer-modified-plan")); from tool import offer_modified_plan
+sys.path.insert(0, os.path.join(_tools, "offer-settlement")); from tool import offer_settlement
+sys.path.insert(0, os.path.join(_tools, "repossession-check")); from tool import check_repossession_eligibility
+sys.path.insert(0, os.path.join(_tools, "compliance-logger")); from tool import log_interaction
+sys.path.insert(0, os.path.join(_tools, "fair-lending-validator")); from tool import validate_fair_lending
 
 
 SYSTEM_PROMPT = """You are the Collections Orchestrator Agent for a loan collections system.
@@ -116,8 +114,7 @@ orchestrator_agent = Agent(
         # Compliance tools
         log_interaction,
         validate_fair_lending,
-        get_compliance_summary,
-    ],
+            ],
     system_prompt=SYSTEM_PROMPT,
 )
 

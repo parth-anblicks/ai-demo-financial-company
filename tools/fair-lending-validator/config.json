@@ -1,0 +1,1 @@
+{"name":"validate_fair_lending","description":"Validate resolution decisions comply with Section 8 fair lending rules. Flags protected characteristics.","parameters":{"customer_id":{"type":"string","required":true},"decision_factors":{"type":"string","description":"Comma-separated list of factors that influenced the decision","required":true}}}

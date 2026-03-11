@@ -1,0 +1,11 @@
+{
+  "name": "verify_customer_identity",
+  "description": "Verify customer identity using 2 of 5 approved methods per Section 2. Returns verified status, methods used, and reason.",
+  "parameters": {
+    "customer_id": {"type": "string", "description": "Loan account ID (e.g., ACC-12345)", "required": true},
+    "method1_type": {"type": "string", "description": "First method: ssn_last4|date_of_birth|account_number|mothers_maiden_name|registered_email", "required": true},
+    "method1_value": {"type": "string", "description": "Value provided by customer for first method", "required": true},
+    "method2_type": {"type": "string", "description": "Second method (must differ from first)", "required": true},
+    "method2_value": {"type": "string", "description": "Value provided by customer for second method", "required": true}
+  }
+}

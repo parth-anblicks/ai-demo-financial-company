@@ -1,0 +1,1 @@
+{"name":"record_hardship","description":"Document customer hardship reason (mandatory per Section 3)","parameters":{"customer_id":{"type":"string","description":"Loan account ID","required":true},"hardship_reason":{"type":"string","description":"Customer stated reason","required":true}}}

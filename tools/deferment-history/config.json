@@ -1,0 +1,1 @@
+{"name":"check_deferment_history","description":"Check deferment eligibility — 12-month lookback and modification count per Section 4","parameters":{"customer_id":{"type":"string","description":"Loan account ID","required":true}}}

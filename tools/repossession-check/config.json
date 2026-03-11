@@ -1,0 +1,1 @@
+{"name":"check_repossession_eligibility","description":"Check repossession eligibility per Section 7 (60+ days, all options declined, notice sent)","parameters":{"customer_id":{"type":"string","required":true}}}

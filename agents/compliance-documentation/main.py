@@ -23,11 +23,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from strands import Agent
 from bedrock_agentcore import BedrockAgentCoreApp
-from tools.compliance_tools import (
-    log_interaction,
-    validate_fair_lending,
-    get_compliance_summary,
-)
+# Import from individual tool directories
+import sys, os
+_tools = os.path.join(os.path.dirname(__file__), "..", "..", "tools")
+sys.path.insert(0, os.path.join(_tools, "compliance-logger")); from tool import log_interaction
+sys.path.insert(0, os.path.join(_tools, "fair-lending-validator")); from tool import validate_fair_lending
 
 
 SOP_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "sops", "compliance-documentation.md")
@@ -56,7 +56,7 @@ CRITICAL RULES:
 
 compliance_agent = Agent(
     model="us.anthropic.claude-sonnet-4-20250514-v1:0",
-    tools=[log_interaction, validate_fair_lending, get_compliance_summary],
+    tools=[log_interaction, validate_fair_lending],
     system_prompt=SYSTEM_PROMPT,
 )
 
